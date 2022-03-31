@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+F:\20212\Object-Oriented Language and Theory (Java)\Lab1\Project\.metadata\.plugins\org.eclipse.jdt.core
+1167275426.index
+3285135714.index
+1865797976.index
