@@ -69,4 +69,57 @@ public class Cart {
 		}
 		return sum;
 	}
+	
+	public void sortByCost() {
+		for(int i = 0 ; i < qtyOrdered - 1; i++) {
+			for(int j = i + 1 ; j < qtyOrdered; j++) {
+				if(itemsOrdered[i].getCost() < itemsOrdered[j].getCost()) {
+					DigitalVideoDisc tmp = itemsOrdered[i];
+					itemsOrdered[i] = itemsOrdered[j];
+					itemsOrdered[j] = tmp;
+				}
+			}
+		}
+		for(int i = 0 ; i < qtyOrdered ; i++) {
+			System.out.println(itemsOrdered[i].getTitle() + " - " + itemsOrdered[i].getCost());
+		}
+	}
+	
+	public void sortByTitle() {
+		for(int i = 0 ; i < qtyOrdered - 1; i++) {
+			for(int j = i + 1 ; j < qtyOrdered; j++) {
+				if(itemsOrdered[i].getTitle().compareTo(itemsOrdered[j].getTitle()) > 0) {
+					DigitalVideoDisc tmp = itemsOrdered[i];
+					itemsOrdered[i] = itemsOrdered[j];
+					itemsOrdered[j] = tmp;
+				}
+			}
+		}
+		for(int i = 0 ; i < qtyOrdered - 1; i++) {
+			System.out.println(itemsOrdered[i].getTitle() + " - " + itemsOrdered[i].getCost());
+		}
+	}
+	
+	public void searchByID(int id) {
+		boolean a = false;
+		for(int i = 0 ; i < qtyOrdered ; i++) {
+			if(itemsOrdered[i].getId() == id) {
+				a = true;
+				System.out.println(itemsOrdered[i].returnByFormat());
+				break;
+			}
+		}
+		if(a == false) System.out.println("There is no suitable dvd on the cart!");
+	}
+	
+	public void print() {
+		DigitalVideoDisc[] newCart = DVDUtils.sortByTitle(itemsOrdered);
+		System.out.println("***********************CART***********************\r\n");
+		System.out.println("Ordered Items: \n");
+		for(int i = 0 ; i < qtyOrdered; i++) {
+			System.out.println(i + 1 + "." + newCart[i].returnByFormat());
+		}
+		System.out.println("Total cost:" + totalCost());
+		System.out.println("***************************************************");
+	}
 }
